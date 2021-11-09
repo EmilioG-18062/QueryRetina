@@ -36,3 +36,4 @@ if __name__ == '__main__':
         json.dump(mysql_table, f, ensure_ascii=False, indent=4)
 
     print("Hola mundo")
+    print("Hola mundo")
