@@ -1,5 +1,5 @@
 # Retina
-# MySQL query
+# MySQL query select
 
 import pymysql
 import json
@@ -14,7 +14,7 @@ mysql_database = "database"
 column_d1 = "estado"
 
 
-def query_select():
+def query_select() -> list:
     # database connection
     connection = pymysql.connect(host=mysql_host, user=mysql_user, passwd=mysql_passwd, database=mysql_database)
     cursor = connection.cursor()
