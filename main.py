@@ -34,6 +34,3 @@ if __name__ == '__main__':
 
     with open('outdated_data.json', 'w', encoding='utf-8') as f:
         json.dump(mysql_table, f, ensure_ascii=False, indent=4)
-
-    print("Hola mundo")
-    print("Hola mundo")
