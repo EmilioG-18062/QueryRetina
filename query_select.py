@@ -12,7 +12,7 @@ mysql_db = "database"
 mysql_table = "table"
 
 # variables for delimited search within the DB
-column_d1 = "estado"
+column_d1 = "sincronizado"
 column_d2 = "fecha_hora"
 fecha_hora1 = ""
 fecha_hora2 = ""
@@ -23,7 +23,7 @@ def query_select() -> list:
     connection = pymysql.connect(host=mysql_host, user=mysql_user, passwd=mysql_passwd, database=mysql_db)
     cursor = connection.cursor()
 
-    retrieve = f"SELECT * FROM {mysql_table} WHERE ({column_d2} BETWEEN {fecha_hora1} AND {fecha_hora2}) AND {column_d1}=0"
+    retrieve = f"SELECT * FROM {mysql_table} WHERE ({column_d2} BETWEEN '{fecha_hora1}' AND '{fecha_hora2}') AND {column_d1}=0"
     cursor.execute(retrieve)
     result = cursor.fetchall()
 
@@ -34,7 +34,7 @@ def query_select() -> list:
 
 
 if __name__ == '__main__':
-    mysql_table = query_select()
+    mysql_response = query_select()
 
     with open('outdated_data.json', 'w', encoding='utf-8') as f:
-        json.dump(mysql_table, f, ensure_ascii=False, indent=4)
+        json.dump(mysql_table, f, ensure_ascii=False, indent=4, default=str)
