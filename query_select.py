@@ -23,11 +23,11 @@ def query_select() -> list:
     cursor = connection.cursor()
 
     retrieve = \
-        "SELECT * FROM {database} WHERE ({dateC} BETWEEN {date1} AND {date2}) AND {column}=0".format(column=column_d1,
-                                                                                                     database=mysql_db,
+        "SELECT * FROM {database} WHERE ({dateC} BETWEEN {date1} AND {date2}) AND {column}=0".format(database=mysql_db,
                                                                                                      dateC=column_d2,
                                                                                                      date1=fecha_hora1,
-                                                                                                     date2=fecha_hora2)
+                                                                                                     date2=fecha_hora2,
+                                                                                                     column=column_d1)
     cursor.execute(retrieve)
     result = cursor.fetchall()
 
