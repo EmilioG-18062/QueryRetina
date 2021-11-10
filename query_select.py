@@ -37,4 +37,4 @@ if __name__ == '__main__':
     mysql_response = query_select()
 
     with open('outdated_data.json', 'w', encoding='utf-8') as f:
-        json.dump(mysql_table, f, ensure_ascii=False, indent=4, default=str)
+        json.dump(mysql_response, f, ensure_ascii=False, indent=4, default=str)

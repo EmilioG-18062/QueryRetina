@@ -29,12 +29,17 @@ def query_insert(data: list) -> None:
     connection = pymysql.connect(host=mysql_host, user=mysql_user, passwd=mysql_passwd, database=mysql_database)
     cursor = connection.cursor()
 
-    send = "INSERT INTO {} (retina_sensor_id, valor, sincronizado) VALUES (%s, %s, %s)".format(mysql_database)
+    send = f"INSERT INTO {mysql_database} (retina_sensor_id, valor, sincronizado) VALUES (%s, %s, %s)"
     cursor.executemany(send, data)
 
     # committing the connection then closing it.
     connection.commit()
     connection.close()
+
+
+def making_dic(data: list) -> dict:
+
+    return
 
 
 if __name__ == '__main__':
