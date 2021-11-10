@@ -8,18 +8,26 @@ import json
 mysql_host = "localhost"
 mysql_user = "user"
 mysql_passwd = "passwd"
-mysql_database = "database"
+mysql_db = "database"
 
 # variables for delimited search within the DB
 column_d1 = "estado"
+column_d2 = "fecha_hora"
+fecha_hora1 = ""
+fecha_hora2 = ""
 
 
 def query_select() -> list:
     # database connection
-    connection = pymysql.connect(host=mysql_host, user=mysql_user, passwd=mysql_passwd, database=mysql_database)
+    connection = pymysql.connect(host=mysql_host, user=mysql_user, passwd=mysql_passwd, database=mysql_db)
     cursor = connection.cursor()
 
-    retrieve = "SELECT * FROM {database} WHERE {column} = 0".format(column=column_d1, database=mysql_database)
+    retrieve = \
+        "SELECT * FROM {database} WHERE ({dateC} BETWEEN {date1} AND {date2}) AND {column}=0".format(column=column_d1,
+                                                                                                     database=mysql_db,
+                                                                                                     dateC=column_d2,
+                                                                                                     date1=fecha_hora1,
+                                                                                                     date2=fecha_hora2)
     cursor.execute(retrieve)
     result = cursor.fetchall()
 
