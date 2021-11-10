@@ -34,7 +34,7 @@ def query_select() -> list:
 
 
 if __name__ == '__main__':
-    mysql_response = query_select()
+    outdated_data = query_select()
 
     with open('outdated_data.json', 'w', encoding='utf-8') as f:
-        json.dump(mysql_response, f, ensure_ascii=False, indent=4, default=str)
+        json.dump(outdated_data, f, ensure_ascii=False, indent=4, default=str)
