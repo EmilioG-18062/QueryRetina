@@ -22,12 +22,7 @@ def query_select() -> list:
     connection = pymysql.connect(host=mysql_host, user=mysql_user, passwd=mysql_passwd, database=mysql_db)
     cursor = connection.cursor()
 
-    retrieve = \
-        "SELECT * FROM {database} WHERE ({dateC} BETWEEN {date1} AND {date2}) AND {column}=0".format(database=mysql_db,
-                                                                                                     dateC=column_d2,
-                                                                                                     date1=fecha_hora1,
-                                                                                                     date2=fecha_hora2,
-                                                                                                     column=column_d1)
+    retrieve = f"SELECT * FROM {mysql_db} WHERE ({column_d2} BETWEEN {fecha_hora1} AND {fecha_hora2}) AND {column_d1}=0"
     cursor.execute(retrieve)
     result = cursor.fetchall()
 
