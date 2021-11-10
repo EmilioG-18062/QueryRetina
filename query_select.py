@@ -9,6 +9,7 @@ mysql_host = "localhost"
 mysql_user = "user"
 mysql_passwd = "passwd"
 mysql_db = "database"
+mysql_table = "table"
 
 # variables for delimited search within the DB
 column_d1 = "estado"
@@ -22,7 +23,7 @@ def query_select() -> list:
     connection = pymysql.connect(host=mysql_host, user=mysql_user, passwd=mysql_passwd, database=mysql_db)
     cursor = connection.cursor()
 
-    retrieve = f"SELECT * FROM {mysql_db} WHERE ({column_d2} BETWEEN {fecha_hora1} AND {fecha_hora2}) AND {column_d1}=0"
+    retrieve = f"SELECT * FROM {mysql_table} WHERE ({column_d2} BETWEEN {fecha_hora1} AND {fecha_hora2}) AND {column_d1}=0"
     cursor.execute(retrieve)
     result = cursor.fetchall()
 
