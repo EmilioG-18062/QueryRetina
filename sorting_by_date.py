@@ -5,6 +5,7 @@ with open("refactored_data.json") as json_file:
 
 # Sorting by date
 bloques = []
+bloque = {}
 fechas = []
 sensores = {}
 for data in refactored_data:

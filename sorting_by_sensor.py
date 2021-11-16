@@ -7,7 +7,7 @@ with open("refactored_data.json") as json_file:
 sensor = {}
 fechas = []
 for data in refactored_data:
-    temp = sensor.get(data[1])
+    temp = sensor.get(data[1], [])
     temp.append(data[2])
     sensor[data[1]] = temp
     fechas.append(data[0])
@@ -36,5 +36,5 @@ for i in range(lists_sizes[0]):
     dict_bloque["sensores"] = temp2
     lista_completa.append(dict_bloque)
 
-with open('formatted_data3.json', 'w', encoding='utf-8') as f:
+with open('formatted_data2.json', 'w', encoding='utf-8') as f:
     json.dump(lista_completa, f, ensure_ascii=False, indent=4, default=str)
