@@ -39,5 +39,3 @@ if __name__ == '__main__':
     # test / uncomment the lines below to save in a new JSON file the changes in outdated_data
     # with open('refactored_data.json', 'w', encoding='utf-8') as f:
     #   json.dump(refactored_data, f, ensure_ascii=False, indent=4, default=str)
-
-

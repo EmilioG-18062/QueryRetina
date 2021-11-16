@@ -41,8 +41,6 @@ def reformatting_data(data: list) -> list:
     for listv in data:
         listv[1] = ref_dict[str(listv[1])]
         listv[3] = 1
-
-    data
     return data
 
 
