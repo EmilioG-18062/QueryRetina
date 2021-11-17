@@ -1,16 +1,13 @@
 import json
 
-with open("refactored_data.json") as json_file:
-    refactored_data = json.load(json_file)
-
 # Sorting by sensor
 sensor = {}
 fechas = []
-for data in refactored_data:
-    temp = sensor.get(data[1], [])
-    temp.append(data[2])
-    sensor[data[1]] = temp
-    fechas.append(data[0])
+for var in refactored_data:
+    temp = sensor.get(var[1], [])
+    temp.append(var[2])
+    sensor[var[1]] = temp
+    fechas.append(var[0])
 
 # Getting the length of each sensor list
 lists_sizes = [len(value) for key, value in sensor.items()]
@@ -28,13 +25,11 @@ lista_completa = []
 for i in range(lists_sizes[0]):
     temp2 = {}
     dict_bloque = {}
-    for data in sensor:
-        temp = sensor[data]
-        temp2[data] = temp[i]
+    for var in sensor:
+        temp = sensor[var]
+        temp2[var] = temp[i]
     dict_bloque["equipo_ip"] = "172.21.14.13"
     dict_bloque["fecha_hora"] = fechas[i]
     dict_bloque["sensores"] = temp2
     lista_completa.append(dict_bloque)
 
-with open('formatted_data2.json', 'w', encoding='utf-8') as f:
-    json.dump(lista_completa, f, ensure_ascii=False, indent=4, default=str)
