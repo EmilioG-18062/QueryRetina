@@ -33,8 +33,18 @@ if __name__ == '__main__':
     with open(document) as json_file:
         outdated_data = json.load(json_file)
 
+    sincronizado = 1
+    bloque_de_listas = []
+    for value in outdated_data:
+        fecha = value["fecha_hora"]
+        sensores = value["sensores"]
+        for sensor in sensores:
+            medicion = sensores[sensor]
+            lista_mediciones = [fecha, sensor, medicion, sincronizado]
+            bloque_de_listas.append(lista_mediciones)
+
     # comment this line to run test
-    query_insert(outdated_data)
+    query_insert(bloque_de_listas)
 
     # test / uncomment the lines below to save in a new JSON file the changes in outdated_data
     # with open('refactored_data.json', 'w', encoding='utf-8') as f:
