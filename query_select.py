@@ -110,8 +110,6 @@ if __name__ == '__main__':
     # SFTP connection
     files = glob.glob(folder_path + file_type)
     max_file = max(files, key=os.path.getctime)
-    folder_path = "{0}\\".format(folder_path)
-    file = max_file.replace(folder_path, '')
 
     with pysftp.Connection(myHostname, username=myUsername, password=myPassword) as sftp:
         localFilePath = max_file
