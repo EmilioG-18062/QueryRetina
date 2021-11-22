@@ -45,7 +45,6 @@ def reformatting_data(data: list) -> list:
     # changing id and sincronizado value then saving in data
     ref_dict = {str(var[0]): str(var[1]) for var in result}
     for listv in data:
-        listv = list(listv)
         listv[1] = ref_dict[str(listv[1])]
         listv[3] = 1
 
@@ -102,7 +101,8 @@ def query_select() -> list:
 
 if __name__ == '__main__':
     outdated_data = query_select()
-    formatted_data = reformatting_data(outdated_data)
+    outdated_list = [list(elem) for elem in outdated_data]
+    formatted_data = reformatting_data(outdated_list)
 
     with open('formatted_data.json', 'w', encoding='utf-8') as f:
         json.dump(formatted_data, f, ensure_ascii=False, indent=4, default=str)
