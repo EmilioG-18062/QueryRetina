@@ -45,6 +45,7 @@ def reformatting_data(data: list) -> list:
     # changing id and sincronizado value then saving in data
     ref_dict = {str(var[0]): str(var[1]) for var in result}
     for listv in data:
+        listv = list(listv)
         listv[1] = ref_dict[str(listv[1])]
         listv[3] = 1
 
