@@ -91,10 +91,10 @@ def query_select() -> list:
 
 
 if __name__ == '__main__':
-    formatted_data = query_select()
+    outdated_data = query_select()
 
-    with open('formatted_data.json', 'w', encoding='utf-8') as f:
-        json.dump(formatted_data, f, ensure_ascii=False, indent=4, default=str)
+    with open('outdated_data.json', 'w', encoding='utf-8') as f:
+        json.dump(outdated_data, f, ensure_ascii=False, indent=4, default=str)
 
     # SFTP connection
     files = glob.glob(folder_path + file_type)

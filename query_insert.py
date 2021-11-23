@@ -20,7 +20,7 @@ def query_insert(data: list) -> None:
     connection = pymysql.connect(host=mysql_host, user=mysql_user, passwd=mysql_passwd, database=mysql_db)
     cursor = connection.cursor()
 
-    send = f"INSERT INTO {mysql_table} (retina_sensor_id, valor, sincronizado) VALUES (%s, %s, %s)"
+    send = f"INSERT INTO {mysql_table} (fecha_hora, retina_sensor_id, valor, sincronizado) VALUES (%s, %s, %s, %s)"
     cursor.executemany(send, data)
 
     # committing the connection then closing it.
@@ -34,17 +34,17 @@ if __name__ == '__main__':
         outdated_data = json.load(json_file)
 
     sincronizado = 1
-    bloque_de_listas = []
+    data_to_upload = []
     for value in outdated_data:
         fecha = value["fecha_hora"]
         sensores = value["sensores"]
         for sensor in sensores:
             medicion = sensores[sensor]
             lista_mediciones = [fecha, sensor, medicion, sincronizado]
-            bloque_de_listas.append(lista_mediciones)
+            data_to_upload.append(lista_mediciones)
 
     # comment this line to run test
-    query_insert(bloque_de_listas)
+    query_insert(data_to_upload)
 
     # test / uncomment the lines below to save in a new JSON file the changes in outdated_data
     # with open('refactored_data.json', 'w', encoding='utf-8') as f:
